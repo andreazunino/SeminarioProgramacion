@@ -1,0 +1,470 @@
+/*
+  ===================================================================
+  PROYECTO: Raíces Café - Landing Page
+  ETAPA 2: CSS
+  ===================================================================
+  Este archivo se construye de forma progresiva, clase a clase. Cada
+  bloque de comentarios "CLASE N" indica en qué momento del curso se
+  incorporó esa parte del código. Lo que se agrega en una clase se
+  conserva y se amplía en las siguientes.
+
+  No se usa ningún framework (nada de Bootstrap, Tailwind, etc.):
+  todo el CSS de este archivo está escrito a mano.
+*/
+
+
+/* ===========================================================
+   CLASE 1
+   Vincular CSS externo + Reset básico
+   =========================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Evita que las listas del <nav> muestren viñetas por defecto */
+ul {
+    list-style: none;
+}
+
+/* Evita el subrayado y el color azul/violeta por defecto de los enlaces */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Las imágenes nunca deberían desbordar su contenedor */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ===========================================================
+   CLASE 2
+   Selectores de etiqueta, clase e id
+   =========================================================== */
+
+/* Selector de etiqueta: afecta a todos los <body> (hay uno solo, pero
+   sirve como ejemplo de selector de etiqueta) */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Selector de clase: cualquier elemento con class="logo" */
+.logo {
+    /* estilos completos en la Clase 8 (Flexbox) */
+}
+
+/* Selector de id: sólo el elemento con id="inicio" */
+#inicio {
+    /* estilos completos en la Clase 4 (Tipografía) y siguientes */
+}
+
+
+/* ===========================================================
+   CLASE 3
+   Colores y fondos
+   =========================================================== */
+
+:root {
+    --color-primario: #6f4518;   /* café oscuro */
+    --color-secundario: #c68b59; /* caramelo */
+    --color-fondo: #fff8f0;      /* crema */
+    --color-fondo-alterno: #f3e4d3;
+    --color-texto: #3a2a1d;
+    --color-blanco: #ffffff;
+    --color-error: #c0392b;
+    --color-exito: #2e7d32;
+}
+
+body {
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+header {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+}
+
+#sobre-nosotros,
+#proyecto {
+    background-color: var(--color-fondo-alterno);
+}
+
+footer {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+}
+
+
+/* ===========================================================
+   CLASE 4
+   Tipografías y estilos de texto
+   =========================================================== */
+
+body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+}
+
+h1, h2, h3 {
+    font-family: Georgia, "Times New Roman", serif;
+    color: var(--color-primario);
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+h3 {
+    font-size: 1.25rem;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#inicio h1,
+#inicio p {
+    color: var(--color-blanco);
+    text-align: center;
+}
+
+.logo span {
+    font-family: Georgia, serif;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+
+/* ===========================================================
+   CLASE 5
+   Modelo de caja (box model)
+   =========================================================== */
+
+section {
+    width: 100%;
+    padding: 4rem 1.5rem;
+}
+
+#sobre-nosotros p,
+#proyecto p {
+    max-width: 700px;
+}
+
+
+/* ===========================================================
+   CLASE 6
+   Margin, padding y border
+   =========================================================== */
+
+header {
+    padding: 1rem 1.5rem;
+}
+
+.logo img {
+    width: 40px;
+    margin-right: 0.5rem;
+}
+
+nav ul li {
+    margin: 0 0.75rem;
+}
+
+.tarjeta {
+    background-color: var(--color-blanco);
+    border: 1px solid var(--color-secundario);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+#formulario-contacto {
+    max-width: 500px;
+    margin: 0 auto; /* centra el formulario horizontalmente */
+}
+
+#formulario-contacto label {
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: 0.25rem;
+    font-weight: bold;
+}
+
+#formulario-contacto input,
+#formulario-contacto textarea {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid var(--color-secundario);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.mensaje-error {
+    display: block;
+    color: var(--color-error);
+    font-size: 0.85rem;
+    min-height: 1.2rem; /* reserva espacio para que el formulario no "salte" */
+}
+
+footer {
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+footer p {
+    margin-bottom: 0.25rem;
+}
+
+
+/* ===========================================================
+   CLASE 7
+   Estilos de enlaces y botones
+   =========================================================== */
+
+.boton {
+    display: inline-block;
+    padding: 0.8rem 1.75rem;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-primario {
+    background-color: var(--color-secundario);
+    color: var(--color-texto);
+}
+
+.boton-secundario {
+    background-color: transparent;
+    color: var(--color-primario);
+    border: 2px solid var(--color-primario);
+}
+
+#boton-enviar {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+    border: none;
+    border-radius: 30px;
+    padding: 0.8rem 1.75rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1.5rem;
+}
+
+nav ul li a {
+    font-weight: bold;
+}
+
+
+/* ===========================================================
+   CLASE 8
+   Flexbox
+   =========================================================== */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+}
+
+/* El botón de menú móvil se oculta en pantallas grandes por defecto;
+   la lógica completa de mostrarlo/ocultarlo se termina en la Clase 13 */
+.boton-menu {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--color-blanco);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#formulario-contacto {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ===========================================================
+   CLASE 9
+   Grid
+   =========================================================== */
+
+.tarjetas {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+}
+
+.tarjeta {
+    margin-bottom: 0; /* el espaciado ahora lo da "gap" del grid, no el margin */
+}
+
+
+/* ===========================================================
+   CLASE 10
+   Pseudoclases: :hover y :focus
+   =========================================================== */
+
+nav ul li a:hover {
+    color: var(--color-secundario);
+}
+
+.boton-primario:hover {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+}
+
+.boton-secundario:hover {
+    background-color: var(--color-primario);
+    color: var(--color-blanco);
+}
+
+#boton-enviar:hover {
+    background-color: #56340f;
+}
+
+.tarjeta:hover {
+    border-color: var(--color-primario);
+}
+
+#formulario-contacto input:focus,
+#formulario-contacto textarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+    box-shadow: 0 0 0 3px rgba(111, 69, 24, 0.15);
+}
+
+
+/* ===========================================================
+   CLASE 11
+   Transiciones sencillas
+   =========================================================== */
+
+.boton,
+#boton-enviar,
+.tarjeta,
+nav ul li a,
+#formulario-contacto input,
+#formulario-contacto textarea {
+    transition: all 0.2s ease-in-out;
+}
+
+
+/* ===========================================================
+   CLASE 12
+   Media queries
+   =========================================================== */
+
+@media (max-width: 480px) {
+    #inicio h1 {
+        font-size: 1.8rem;
+    }
+}
+
+
+/* ===========================================================
+   CLASE 13
+   Diseño responsive: escritorio, tablet y celular
+   =========================================================== */
+
+/* --- Tablet: hasta 768px de ancho --- */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    section {
+        padding: 3rem 1.25rem;
+    }
+
+    .tarjetas {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    }
+}
+
+/* --- Celular: hasta 480px de ancho --- */
+@media (max-width: 480px) {
+    /* Escondemos el menú de navegación por defecto... */
+    nav {
+        display: none;
+        width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul li {
+        margin: 0.5rem 0;
+    }
+
+    /* ...y mostramos el botón hamburguesa */
+    .boton-menu {
+        display: block;
+    }
+
+    header.menu-abierto nav {
+        display: block;
+    }
+
+    header {
+        flex-wrap: wrap;
+    }
+
+    .tarjetas {
+        grid-template-columns: 1fr;
+    }
+
+    #formulario-contacto {
+        max-width: 100%;
+    }
+}
+
+
+/* ===========================================================
+   Utilidades generales (usadas desde JavaScript)
+   =========================================================== */
+
+.oculto {
+    display: none;
+}
+
+.mensaje-confirmacion {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    border-radius: 4px;
+    background-color: #e6f4ea;
+    color: var(--color-exito);
+    font-weight: bold;
+}

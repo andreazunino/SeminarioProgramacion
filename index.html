@@ -1,0 +1,168 @@
+<!--
+  ===================================================================
+  PROYECTO: Raíces Café - Landing Page
+  ETAPA 1: HTML
+  ===================================================================
+  Este archivo se construyó de forma progresiva, clase a clase. Cada
+  bloque de comentarios "CLASE N" indica en qué momento del curso se
+  incorporó esa parte del documento.
+
+  Emprendimiento ficticio elegido para todo el curso: "Raíces Café",
+  una cafetería de especialidad con repostería artesanal.
+-->
+
+<!--
+========================
+CLASE 1
+========================
+Estructura básica del documento HTML.
+-->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raíces Café | Cafetería de especialidad</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+    <!--
+    ========================
+    CLASE 5
+    ========================
+    Etiquetas semánticas: header, nav, main, section, article, footer.
+    -->
+
+    <header>
+        <!-- CLASE 4: logo con imagen (ruta relativa a la carpeta img/) -->
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo de Raíces Café">
+            <span>Raíces Café</span>
+        </div>
+
+        <!-- CLASE 3: menú de navegación armado con lista de enlaces -->
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#sobre-nosotros">Sobre nosotros</a></li>
+                <li><a href="#servicios">Servicios</a></li>
+                <li><a href="#proyecto">Proyecto</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+
+        <button type="button" class="boton-menu" id="boton-menu" aria-label="Abrir menú">☰</button>
+    </header>
+
+    <main>
+
+        <!-- CLASE 2: título principal y bajada de la sección hero -->
+        <section id="inicio" class="hero">
+            <h1>Café de especialidad, hecho con raíces</h1>
+            <p>Tostamos nuestro propio café y horneamos todos los días para vos.</p>
+            <a href="#contacto" class="boton boton-primario" id="cta-principal">Reservá tu mesa</a>
+        </section>
+
+        <section id="sobre-nosotros">
+            <h2>Sobre nosotros</h2>
+            <!-- CLASE 4: imagen con ruta relativa y atributo alt descriptivo -->
+            <img src="img/equipo.jpg" alt="Equipo de Raíces Café trabajando en el local">
+            <p>
+                Raíces Café nació en 2019 como un proyecto familiar en el barrio
+                de Almagro. Tostamos nuestro propio café en pequeños lotes y
+                horneamos todos los días para ofrecer productos frescos, de
+                origen responsable y hechos con tiempo.
+            </p>
+            <p id="texto-extra" class="oculto">
+                Hoy somos un equipo de 8 personas que comparten la misma
+                pasión: que cada visita se sienta como volver a un lugar
+                conocido. Trabajamos con productores de todo el país y
+                elegimos con cuidado cada insumo que usamos.
+            </p>
+            <button type="button" id="boton-ver-mas" class="boton boton-secundario">Conocer más</button>
+        </section>
+
+        <section id="servicios">
+            <h2>Nuestros servicios</h2>
+
+            <div id="contenedor-tarjetas" class="tarjetas">
+                <article class="tarjeta">
+                    <h3>☕ Café de especialidad</h3>
+                    <p>Granos seleccionados y tostados en el local cada semana.</p>
+                </article>
+
+                <article class="tarjeta">
+                    <h3>🥐 Repostería artesanal</h3>
+                    <p>Horneamos todos los días: masas, tortas y facturas caseras.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="proyecto">
+            <h2>Nuestro proyecto: de la chacra a tu taza</h2>
+            <p>
+                Estamos desarrollando un vínculo directo con pequeños
+                productores de Misiones para traer café de origen 100%
+                trazable, sin intermediarios. La idea es que en cada taza
+                puedas conocer de qué chacra viene el café que estás tomando.
+            </p>
+            <p>
+                Este proyecto se lanza a fin de año: quienes se sumen a
+                nuestra lista de contacto van a ser los primeros en
+                enterarse.
+            </p>
+        </section>
+
+        <!--
+        ========================
+        CLASE 6
+        ========================
+        Formulario con label, input, textarea y button.
+        -->
+        <section id="contacto">
+            <h2>Contáctanos</h2>
+            <p>¿Tenés una consulta, una reserva o querés sumarte al proyecto? Escribinos.</p>
+
+            <form id="formulario-contacto" novalidate>
+                <label for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+                <!-- CLASE 8 (JS): acá se va a mostrar un mensaje de error si el campo queda vacío -->
+                <span class="mensaje-error" id="error-nombre"></span>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="tu@email.com" required>
+                <span class="mensaje-error" id="error-email"></span>
+
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="5" placeholder="Contanos en qué te podemos ayudar..." required></textarea>
+                <span class="mensaje-error" id="error-mensaje"></span>
+
+                <button type="submit" id="boton-enviar">Enviar mensaje</button>
+
+                <p id="mensaje-confirmacion" class="mensaje-confirmacion oculto"></p>
+            </form>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; <span id="anio-actual">2026</span> Raíces Café. Todos los derechos reservados.</p>
+        <p>Almagro, Buenos Aires · hola@raicescafe.com.ar</p>
+    </footer>
+
+    <!--
+    ========================
+    CLASE 7
+    ========================
+    Atributos id y class necesarios para CSS y JavaScript.
+    -->
+
+    <!--
+    ETAPA JAVASCRIPT - CLASE 1
+    -->
+    <script src="js/app.js" defer></script>
+
+</body>
+</html>
