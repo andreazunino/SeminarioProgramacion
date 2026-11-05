@@ -142,47 +142,8 @@ selectores para aplicar estilos, y JavaScript los usa con
 > funcionalidades (como pedir datos a otro archivo) no funcionan si el
 > archivo se abre "directo" desde el disco.
 
-## Actividades para estudiantes
-
-1. **Personalización de marca**: cambiar el nombre "Raíces Café" por el de
-   un emprendimiento propio (real o inventado) en `index.html`, y ajustar
-   los textos de cada sección para que tengan sentido con el nuevo rubro.
-2. **Paleta de colores propia**: modificar las variables CSS dentro de
-   `:root` en `estilos.css` para armar una paleta de colores distinta,
-   coherente con la nueva marca.
-3. **Quinto servicio**: agregar un objeto más al array `servicios` en
-   `app.js` (Clase 4/12) y comprobar que la tarjeta nueva aparece sola,
-   sin tocar el HTML.
-4. **Nueva sección**: agregar una sección "Preguntas frecuentes" al
-   `<main>`, con al menos 3 preguntas y respuestas, usando las etiquetas
-   semánticas correctas.
-5. **Revisión cruzada**: en parejas, intercambiar el proyecto con un
-   compañero o compañera y usar el inspector del navegador (F12) para
-   identificar 3 ids o classes que no se estén usando en el CSS o el JS.
-
-## Desafíos opcionales
-
-- **Validación de teléfono**: agregar un campo `input type="tel"` al
-  formulario y validarlo con una expresión regular sencilla.
-- **Contador de caracteres**: mostrar en tiempo real, debajo del
-  `textarea` del mensaje, cuántos caracteres lleva escritos el usuario
-  (usando el evento `input` que ya vimos en la Clase 7).
-- **Modo oscuro**: agregar un botón que alterne una clase `modo-oscuro`
-  en el `<body>`, y definir en CSS una segunda paleta de colores para ese
-  modo usando variables CSS.
-- **Scroll suave**: investigar la propiedad CSS `scroll-behavior: smooth`
-  y aplicarla al `html`, para que los enlaces internos del menú se
-  desplacen de forma animada en vez de "saltar" directamente.
-- **Guardar en localStorage**: al enviar el formulario, además del
-  mensaje de confirmación, guardar el nombre del último visitante en
-  `localStorage` y mostrarlo la próxima vez que se abra la página
-  ("¡Hola de nuevo, [nombre]!").
-
-## Otro proyecto en este repo: Sierra Fit (lp_gimnasio_clase)
-
-Dentro de la carpeta [`lp_gimnasio_clase/`](lp_gimnasio_clase/) hay un segundo
-proyecto, independiente de Raíces Café: la landing page de un gimnasio
-ficticio ("Sierra Fit Tandil"), con su propio repositorio Git. Es más grande
+## Actividad Sierra Fit 
+Es más grande
 y completo que este (planes, tabla de clases y horarios, profesores,
 formulario de inscripción, etc.) y se usa con dos objetivos distintos:
 
@@ -195,8 +156,7 @@ formulario de inscripción, etc.) y se usa con dos objetivos distintos:
   de merge que van a surgir en `index.html` y `estilos.css`.
 
 El detalle completo de esa actividad (división de grupos, pasos de Git,
-tipos de conflictos a resolver y checklist final) está en
-[`lp_gimnasio_clase/README.md`](lp_gimnasio_clase/README.md).
+tipos de conflictos a resolver y checklist final) está en el documento Actividad Grupal.
 
 ## Posibles errores frecuentes
 
