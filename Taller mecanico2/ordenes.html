@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  ORDENES.HTML — Listado de ÓRDENES DE TRABAJO
+  ---------------------------------------------------------------------
+  💡 Para explicar en clase:
+  - Mismo menú y barra que index.html (cambia el link "activo").
+  - Lo nuevo: un formulario de FILTROS, una tabla con botones de
+    acción y una PAGINACIÓN.
+  - Sin JavaScript los filtros no filtran: armamos solo lo visual.
+  =====================================================================
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Órdenes de Trabajo | Taller Mecánico</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+  <aside class="sidebar">
+    <div class="logo"><i class="fa-solid fa-screwdriver-wrench"></i> Taller Mecánico</div>
+
+    <nav class="menu">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+      <a href="ordenes.html" class="activo"><i class="fa-solid fa-clipboard-list"></i> Órdenes de Trabajo</a>
+      <a href="#"><i class="fa-solid fa-users"></i> Clientes</a>
+      <a href="#"><i class="fa-solid fa-car"></i> Vehículos</a>
+      <a href="#"><i class="fa-solid fa-wrench"></i> Servicios</a>
+      <a href="#"><i class="fa-solid fa-cube"></i> Repuestos</a>
+      <a href="#"><i class="fa-solid fa-file-invoice"></i> Facturación</a>
+      <a href="#"><i class="fa-solid fa-chart-column"></i> Reportes</a>
+    </nav>
+  </aside>
+
+  <div class="contenido">
+
+    <header class="barra">
+      <i class="fa-regular fa-bell"></i>
+      <span><i class="fa-solid fa-circle-user"></i> Admin</span>
+    </header>
+
+    <main class="pagina">
+
+      <!-- Título + subtítulo a la izquierda, botón a la derecha -->
+      <div class="encabezado">
+        <div>
+          <h1>Órdenes de Trabajo</h1>
+          <p>Consultá, filtrá y gestioná las órdenes del taller.</p>
+        </div>
+        <a href="nueva-orden.html" class="btn">+ Nueva Orden</a>
+      </div>
+
+      <!-- FILTROS
+           - .fila pone los campos uno al lado del otro.
+           - El "for" del label coincide con el "id" del campo:
+             al tocar el texto se selecciona el campo.
+           - placeholder = texto gris de ayuda. -->
+      <form class="card fila">
+        <div>
+          <label for="buscar">Buscar</label>
+          <input type="text" id="buscar" placeholder="N° de orden, cliente o patente...">
+        </div>
+
+        <!-- <select> = lista desplegable -->
+        <div>
+          <label for="estado">Estado</label>
+          <select id="estado">
+            <option>Todos</option>
+            <option>En curso</option>
+            <option>Finalizada</option>
+            <option>Pendiente</option>
+          </select>
+        </div>
+
+        <!-- type="date" muestra un calendario (formato AAAA-MM-DD) -->
+        <div>
+          <label for="desde">Fecha desde</label>
+          <input type="date" id="desde" value="2025-06-01">
+        </div>
+
+        <div>
+          <label for="hasta">Fecha hasta</label>
+          <input type="date" id="hasta" value="2025-06-16">
+        </div>
+
+        <button type="button" class="btn">Aplicar Filtros</button>
+      </form>
+
+      <!-- TABLA DE ÓRDENES
+           En "Acciones" hay íconos; title muestra un cartelito
+           al pasar el mouse. -->
+      <section class="card">
+        <table>
+          <thead>
+            <tr>
+              <th>N° Orden</th>
+              <th>Fecha</th>
+              <th>Cliente</th>
+              <th>Vehículo</th>
+              <th>Servicio(s)</th>
+              <th>Total (ARS)</th>
+              <th>Estado</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><b>OT-0152</b></td>
+              <td>16/06/2025</td>
+              <td>María Gómez</td>
+              <td>Toyota Corolla</td>
+              <td>Cambio de aceite</td>
+              <td>$ 25.000</td>
+              <td><span class="estado curso">En curso</span></td>
+              <td>
+                <i class="fa-regular fa-eye" title="Ver"></i>&nbsp;
+                <i class="fa-solid fa-pen" title="Editar"></i>&nbsp;
+                <i class="fa-solid fa-print" title="Imprimir"></i>
+              </td>
+            </tr>
+            <tr>
+              <td><b>OT-0151</b></td>
+              <td>16/06/2025</td>
+              <td>Juan Pérez</td>
+              <td>Volkswagen Gol</td>
+              <td>Revisión general</td>
+              <td>$ 18.000</td>
+              <td><span class="estado curso">En curso</span></td>
+              <td>
+                <i class="fa-regular fa-eye" title="Ver"></i>&nbsp;
+                <i class="fa-solid fa-pen" title="Editar"></i>&nbsp;
+                <i class="fa-solid fa-print" title="Imprimir"></i>
+              </td>
+            </tr>
+            <tr>
+              <td><b>OT-0150</b></td>
+              <td>15/06/2025</td>
+              <td>Carlos Ruiz</td>
+              <td>Fiat Cronos</td>
+              <td>Cambio de frenos</td>
+              <td>$ 72.000</td>
+              <td><span class="estado finalizada">Finalizada</span></td>
+              <td>
+                <i class="fa-regular fa-eye" title="Ver"></i>&nbsp;
+                <i class="fa-solid fa-pen" title="Editar"></i>&nbsp;
+                <i class="fa-solid fa-print" title="Imprimir"></i>
+              </td>
+            </tr>
+            <tr>
+              <td><b>OT-0149</b></td>
+              <td>14/06/2025</td>
+              <td>Ana Torres</td>
+              <td>Ford Ranger</td>
+              <td>Service completo</td>
+              <td>$ 95.000</td>
+              <td><span class="estado finalizada">Finalizada</span></td>
+              <td>
+                <i class="fa-regular fa-eye" title="Ver"></i>&nbsp;
+                <i class="fa-solid fa-pen" title="Editar"></i>&nbsp;
+                <i class="fa-solid fa-print" title="Imprimir"></i>
+              </td>
+            </tr>
+            <tr>
+              <td><b>OT-0148</b></td>
+              <td>13/06/2025</td>
+              <td>Luis Morales</td>
+              <td>Chevrolet Onix</td>
+              <td>Diagnóstico</td>
+              <td>$ 12.000</td>
+              <td><span class="estado pendiente">Pendiente</span></td>
+              <td>
+                <i class="fa-regular fa-eye" title="Ver"></i>&nbsp;
+                <i class="fa-solid fa-pen" title="Editar"></i>&nbsp;
+                <i class="fa-solid fa-print" title="Imprimir"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- PAGINACIÓN: reutilizamos .encabezado (texto izq / botones der).
+           La página actual es un .btn lleno; las demás .btn-borde. -->
+      <div class="encabezado">
+        <p>Mostrando 5 de 24 órdenes</p>
+        <nav>
+          <a href="#" class="btn btn-borde">‹ Anterior</a>
+          <a href="#" class="btn">1</a>
+          <a href="#" class="btn btn-borde">2</a>
+          <a href="#" class="btn btn-borde">3</a>
+          <a href="#" class="btn btn-borde">Siguiente ›</a>
+        </nav>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>

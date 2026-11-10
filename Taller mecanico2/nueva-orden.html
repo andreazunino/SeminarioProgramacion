@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  NUEVA-ORDEN.HTML — Formulario de NUEVA ORDEN de trabajo
+  ---------------------------------------------------------------------
+  💡 Para explicar en clase:
+  - Toda la página es un gran <form> dividido en cards:
+      1. Cliente y Vehículo   2. Servicios   3. Repuestos
+      4. Observaciones, estado y botones
+  - Campos que aparecen: select, text, number y textarea.
+  - "required" = campo obligatorio (el navegador no deja enviar
+    el formulario vacío).
+  - Los totales están escritos a mano: calcularlos es tarea de
+    JavaScript (próxima clase 😉).
+  =====================================================================
+-->
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nueva Orden | Taller Mecánico</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+  <!-- "Órdenes de Trabajo" queda activo: esta página es parte de esa sección -->
+  <aside class="sidebar">
+    <div class="logo"><i class="fa-solid fa-screwdriver-wrench"></i> Taller Mecánico</div>
+
+    <nav class="menu">
+      <a href="index.html"><i class="fa-solid fa-house"></i> Inicio</a>
+      <a href="ordenes.html" class="activo"><i class="fa-solid fa-clipboard-list"></i> Órdenes de Trabajo</a>
+      <a href="#"><i class="fa-solid fa-users"></i> Clientes</a>
+      <a href="#"><i class="fa-solid fa-car"></i> Vehículos</a>
+      <a href="#"><i class="fa-solid fa-wrench"></i> Servicios</a>
+      <a href="#"><i class="fa-solid fa-cube"></i> Repuestos</a>
+      <a href="#"><i class="fa-solid fa-file-invoice"></i> Facturación</a>
+      <a href="#"><i class="fa-solid fa-chart-column"></i> Reportes</a>
+    </nav>
+  </aside>
+
+  <div class="contenido">
+
+    <header class="barra">
+      <i class="fa-regular fa-bell"></i>
+      <span><i class="fa-solid fa-circle-user"></i> Admin</span>
+    </header>
+
+    <main class="pagina">
+
+      <div class="encabezado">
+        <div>
+          <h1>Nueva Orden de Trabajo</h1>
+          <p>Registrá una nueva orden de trabajo para un cliente y su vehículo.</p>
+        </div>
+        <p><b>Fecha de emisión:</b> 16/06/2025</p>
+      </div>
+
+      <!-- action="#": todavía no hay servidor que reciba los datos -->
+      <form action="#">
+
+        <!-- 1. CLIENTE Y VEHÍCULO: dos cards lado a lado (.grilla-2) -->
+        <div class="grilla-2">
+
+          <section class="card">
+            <h2><i class="fa-regular fa-address-card"></i> Datos del Cliente</h2>
+
+            <!-- .fila: select y botón en la misma línea -->
+            <div class="fila">
+              <div>
+                <label for="cliente">Cliente *</label>
+                <select id="cliente" required>
+                  <option>Juan Pérez (DNI: 32.123.456)</option>
+                  <option>María Gómez (DNI: 30.456.789)</option>
+                </select>
+              </div>
+              <button type="button" class="btn">+ Nuevo Cliente</button>
+            </div>
+
+            <p class="info">
+              Dirección: Av. San Martín 123, Córdoba<br>
+              Teléfono: 351-555-1234
+            </p>
+          </section>
+
+          <section class="card">
+            <h2><i class="fa-solid fa-car"></i> Datos del Vehículo</h2>
+
+            <div class="fila">
+              <div>
+                <label for="vehiculo">Vehículo *</label>
+                <select id="vehiculo" required>
+                  <option>Volkswagen Gol</option>
+                  <option>Toyota Corolla</option>
+                </select>
+              </div>
+              <div>
+                <label for="patente">Patente *</label>
+                <input type="text" id="patente" value="AB 123 CD" required>
+              </div>
+              <div>
+                <label for="km">Kilometraje *</label>
+                <!-- type="number" solo acepta números -->
+                <input type="number" id="km" value="85000" required>
+              </div>
+            </div>
+
+            <p class="info">
+              Marca: Volkswagen | Modelo: Gol | Año: 2018<br>
+              Cliente: Juan Pérez
+            </p>
+          </section>
+        </div>
+
+        <!-- 2. SERVICIOS: una tabla con campos dentro de las celdas.
+                Es la forma típica de cargar "ítems" en un formulario. -->
+        <section class="card">
+          <h2><i class="fa-solid fa-wrench"></i> Servicios</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Servicio</th>
+                <th>Descripción</th>
+                <th>Precio (ARS)</th>
+                <th>Cantidad</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <select>
+                    <option>Cambio de aceite</option>
+                    <option>Revisión general</option>
+                  </select>
+                </td>
+                <td><input type="text" value="Cambio de aceite y filtro"></td>
+                <td><input type="number" value="25000"></td>
+                <td><input type="number" value="1"></td>
+                <td>$ 25.000</td>
+              </tr>
+              <tr>
+                <td>
+                  <select>
+                    <option>Revisión general</option>
+                    <option>Cambio de aceite</option>
+                  </select>
+                </td>
+                <td><input type="text" value="Chequeo de frenos, luces y niveles"></td>
+                <td><input type="number" value="18000"></td>
+                <td><input type="number" value="1"></td>
+                <td>$ 18.000</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- Botón a la izquierda y total a la derecha (.encabezado) -->
+          <div class="encabezado">
+            <button type="button" class="btn btn-borde">+ Agregar servicio</button>
+            <span class="total">Total servicios: $ 43.000</span>
+          </div>
+        </section>
+
+        <!-- 3. REPUESTOS: misma idea que Servicios -->
+        <section class="card">
+          <h2><i class="fa-solid fa-cube"></i> Repuestos</h2>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Repuesto</th>
+                <th>Cantidad</th>
+                <th>Precio (ARS)</th>
+                <th>Subtotal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="text" value="Filtro de aceite"></td>
+                <td><input type="number" value="1"></td>
+                <td><input type="number" value="8500"></td>
+                <td>$ 8.500</td>
+              </tr>
+              <tr>
+                <td><input type="text" value="Aceite 10W40 (1L)"></td>
+                <td><input type="number" value="4"></td>
+                <td><input type="number" value="4200"></td>
+                <td>$ 16.800</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="encabezado">
+            <button type="button" class="btn btn-borde">+ Agregar repuesto</button>
+            <span class="total">Total repuestos: $ 25.300</span>
+          </div>
+        </section>
+
+        <!-- 4. OBSERVACIONES Y ESTADO -->
+        <section class="card grilla-2">
+          <div>
+            <!-- <textarea> = texto de varias líneas -->
+            <label for="obs">Observaciones</label>
+            <textarea id="obs" rows="3">Cliente comenta un ruido en la suspensión delantera.</textarea>
+          </div>
+          <div>
+            <label for="estado-orden">Estado de la orden</label>
+            <select id="estado-orden">
+              <option>Pendiente</option>
+              <option>En curso</option>
+              <option>Finalizada</option>
+            </select>
+          </div>
+        </section>
+
+        <!-- BOTONES FINALES
+             type="reset"  -> vuelve los campos a sus valores iniciales
+             type="submit" -> envía el formulario -->
+        <div class="encabezado">
+          <span></span>
+          <div>
+            <button type="reset" class="btn btn-borde">Cancelar</button>
+            <button type="submit" class="btn">Guardar Orden</button>
+          </div>
+        </div>
+
+      </form>
+    </main>
+  </div>
+
+</body>
+</html>

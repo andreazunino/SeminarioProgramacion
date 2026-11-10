@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<!--
+  =====================================================================
+  INDEX.HTML — Página de INICIO (panel admin)
+  ---------------------------------------------------------------------
+  💡 Para explicar en clase:
+  - <head> = lo que NO se ve (título, CSS).  <body> = lo que SÍ se ve.
+  - Las 3 páginas tienen la misma estructura:
+      <aside>  -> menú lateral
+      <div class="contenido">
+        <header> -> barra de arriba
+        <main>   -> lo propio de cada página
+  - Usar etiquetas con significado (aside, header, main, section)
+    se llama HTML semántico.
+  =====================================================================
+-->
+<html lang="es">
+<head>
+  <!-- UTF-8 permite tildes y ñ -->
+  <meta charset="UTF-8">
+  <!-- viewport: adapta la página al ancho del celular -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Texto de la pestaña del navegador -->
+  <title>Inicio | Taller Mecánico</title>
+
+  <!-- Íconos de Font Awesome (necesita internet).
+       Se usan así: <i class="fa-solid fa-car"></i> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Nuestro CSS -->
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+
+<body>
+
+  <!-- MENÚ LATERAL: se repite en las 3 páginas.
+       Solo cambia qué link tiene la clase "activo". -->
+  <aside class="sidebar">
+    <div class="logo"><i class="fa-solid fa-screwdriver-wrench"></i> Taller Mecánico</div>
+
+    <nav class="menu">
+      <a href="index.html" class="activo"><i class="fa-solid fa-house"></i> Inicio</a>
+      <a href="ordenes.html"><i class="fa-solid fa-clipboard-list"></i> Órdenes de Trabajo</a>
+      <a href="#"><i class="fa-solid fa-users"></i> Clientes</a>
+      <a href="#"><i class="fa-solid fa-car"></i> Vehículos</a>
+      <a href="#"><i class="fa-solid fa-wrench"></i> Servicios</a>
+      <a href="#"><i class="fa-solid fa-cube"></i> Repuestos</a>
+      <a href="#"><i class="fa-solid fa-file-invoice"></i> Facturación</a>
+      <a href="#"><i class="fa-solid fa-chart-column"></i> Reportes</a>
+    </nav>
+  </aside>
+
+  <div class="contenido">
+
+    <!-- BARRA DE ARRIBA: notificaciones y usuario -->
+    <header class="barra">
+      <i class="fa-regular fa-bell"></i>
+      <span><i class="fa-solid fa-circle-user"></i> Admin</span>
+    </header>
+
+    <main class="pagina">
+
+      <div class="encabezado">
+        <h1>Bienvenido al Taller Mecánico</h1>
+      </div>
+
+      <!-- TARJETAS DE RESUMEN: 4 columnas con CSS Grid (.grilla-4).
+           Cada una tiene una clase de color. -->
+      <section class="grilla-4">
+        <div class="dato azul">
+          <i class="fa-solid fa-car"></i> Órdenes en curso <strong>5</strong>
+        </div>
+        <div class="dato verde">
+          <i class="fa-regular fa-circle-check"></i> Finalizadas (este mes) <strong>12</strong>
+        </div>
+        <div class="dato naranja">
+          <i class="fa-solid fa-users"></i> Clientes <strong>48</strong>
+        </div>
+        <div class="dato violeta">
+          <i class="fa-solid fa-cube"></i> Repuestos en stock <strong>128</strong>
+        </div>
+      </section>
+
+      <!-- TABLA DE ÓRDENES
+           <thead> = títulos (<th>)  |  <tbody> = datos (<td>)
+           <tr> = cada fila -->
+      <section class="card">
+        <div class="encabezado">
+          <h2><i class="fa-solid fa-clipboard-list"></i> Órdenes de Trabajo</h2>
+          <!-- Un link con aspecto de botón -->
+          <a href="nueva-orden.html" class="btn">+ Nueva Orden</a>
+        </div>
+
+        <table>
+          <thead>
+            <tr>
+              <th>N° Orden</th>
+              <th>Cliente</th>
+              <th>Vehículo</th>
+              <th>Servicio</th>
+              <th>Estado</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>OT-0152</td>
+              <td>María Gómez</td>
+              <td>Toyota Corolla</td>
+              <td>Cambio de aceite</td>
+              <!-- El color depende de la segunda clase -->
+              <td><span class="estado curso">En curso</span></td>
+            </tr>
+            <tr>
+              <td>OT-0151</td>
+              <td>Juan Pérez</td>
+              <td>Volkswagen Gol</td>
+              <td>Revisión general</td>
+              <td><span class="estado curso">En curso</span></td>
+            </tr>
+            <tr>
+              <td>OT-0150</td>
+              <td>Carlos Ruiz</td>
+              <td>Fiat Cronos</td>
+              <td>Cambio de frenos</td>
+              <td><span class="estado finalizada">Finalizada</span></td>
+            </tr>
+            <tr>
+              <td>OT-0149</td>
+              <td>Ana Torres</td>
+              <td>Ford Ranger</td>
+              <td>Service completo</td>
+              <td><span class="estado finalizada">Finalizada</span></td>
+            </tr>
+            <tr>
+              <td>OT-0148</td>
+              <td>Luis Morales</td>
+              <td>Chevrolet Onix</td>
+              <td>Diagnóstico</td>
+              <td><span class="estado pendiente">Pendiente</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <!-- DOS CARDS LADO A LADO (.grilla-2) -->
+      <div class="grilla-2">
+
+        <!-- Gráfico de torta hecho SOLO con CSS (ver .dona) -->
+        <section class="card">
+          <h2>Órdenes por estado</h2>
+          <div class="fila">
+            <!-- <figure> = etiqueta para gráficos e imágenes.
+                 ⚠ OJO: tiene que ser <figure> y NO <div>.
+                 En el CSS existe la regla ".fila > div { flex: 1; }"
+                 que estira todos los div de la fila. Esa regla tiene
+                 MÁS prioridad (especificidad) que ".dona" sola, porque
+                 suma una clase + una etiqueta. Si la cambiamos por un
+                 <div>, la torta se estira y queda como un óvalo.
+                 👉 Buen ejemplo para explicar especificidad en CSS. -->
+            <figure class="dona"></figure>
+            <!-- <ul> = lista. Cada <li> es un ítem -->
+            <ul>
+              <li>🔵 En curso: 2</li>
+              <li>🟢 Finalizadas: 2</li>
+              <li>🟡 Pendientes: 1</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="card">
+          <h2><i class="fa-regular fa-clock"></i> Últimas órdenes</h2>
+          <table>
+            <tr><td>OT-0152 – Toyota Corolla – Cambio de aceite</td><td>Hoy, 10:24</td></tr>
+            <tr><td>OT-0151 – Volkswagen Gol – Revisión general</td><td>Hoy, 09:17</td></tr>
+            <tr><td>OT-0150 – Fiat Cronos – Cambio de frenos</td><td>Ayer, 17:32</td></tr>
+          </table>
+        </section>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>

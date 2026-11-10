@@ -1,0 +1,287 @@
+/* =====================================================================
+   ESTILOS.CSS — Una sola hoja de estilos para las 3 páginas
+   ---------------------------------------------------------------------
+   💡 Si cambiamos algo acá, cambia en todo el sitio.
+   Orden: 1. Base  2. Sidebar  3. Contenido  4. Componentes
+          5. Inicio  6. Celulares
+   ===================================================================== */
+
+
+/* ---------- 1. BASE ----------
+   Sacamos márgenes que trae el navegador y elegimos fuente y fondo.
+   box-sizing: border-box -> el padding no agranda las cajas. */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f3f6fb;
+  color: #1e293b;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;          /* saca los puntitos de las listas */
+}
+
+
+/* ---------- 2. SIDEBAR (menú lateral) ----------
+   position: fixed lo deja quieto aunque hagamos scroll. */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 100vh;
+  background-color: #13264a;
+  color: white;
+  padding: 20px 12px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+  margin: 0 10px 30px;
+}
+
+/* display: block hace que cada link ocupe su propia línea */
+.menu a {
+  display: block;
+  padding: 12px 14px;
+  border-radius: 8px;
+  color: #cdd6e6;
+}
+
+.menu a i {
+  width: 28px;               /* ancho fijo = textos alineados */
+}
+
+/* :hover = cuando pasa el mouse  |  .activo = página actual */
+.menu a:hover,
+.menu a.activo {
+  background-color: #1565d8;
+  color: white;
+}
+
+
+/* ---------- 3. CONTENIDO ----------
+   margin-left = ancho del sidebar, para que no quede tapado. */
+.contenido {
+  margin-left: 240px;
+}
+
+/* Barra de arriba: flexbox con todo a la derecha */
+.barra {
+  display: flex;
+  justify-content: flex-end;
+  gap: 24px;
+  padding: 18px 28px;
+  background-color: white;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.pagina {
+  padding: 28px;
+}
+
+/* Título a la izquierda y botón a la derecha */
+.encabezado {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.encabezado p {
+  color: #64748b;
+  margin-top: 6px;
+}
+
+
+/* ---------- 4. COMPONENTES QUE SE REPITEN ---------- */
+
+/* CARD: caja blanca con borde redondeado */
+.card {
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 19px;
+  margin-bottom: 16px;
+}
+
+/* GRILLAS: CSS Grid reparte columnas iguales (1fr = 1 parte) */
+.grilla-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.grilla-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+/* FILA: elementos uno al lado del otro (flexbox) */
+.fila {
+  display: flex;
+  align-items: flex-end;     /* alinea todo por abajo */
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+/* flex: 1 -> cada campo crece en partes iguales */
+.fila > div {
+  flex: 1;
+}
+
+/* BOTONES: clase base + variante con borde */
+.btn {
+  display: inline-block;
+  padding: 10px 18px;
+  border: 1px solid #1565d8;
+  border-radius: 8px;
+  background-color: #1565d8;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;           /* manito al pasar el mouse */
+}
+
+.btn-borde {
+  background-color: white;
+  color: #1565d8;
+}
+
+/* TABLAS */
+table {
+  width: 100%;
+  border-collapse: collapse; /* une los bordes de las celdas */
+}
+
+th {
+  background-color: #f1f4f9;
+  text-align: left;
+}
+
+th, td {
+  padding: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+/* ETIQUETAS DE ESTADO: forma de "píldora" + un color por estado */
+.estado {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.curso      { background-color: #e8f0fd; color: #1565d8; }
+.finalizada { background-color: #dcf5e6; color: #22a55a; }
+.pendiente  { background-color: #fff4cc; color: #b07f00; }
+
+/* FORMULARIOS: label arriba, campo ocupando todo el ancho */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 9px;
+  border: 1px solid #cfd8e3;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+/* Caja gris con datos extra */
+.info {
+  background-color: #f3f6fa;
+  padding: 12px;
+  border-radius: 8px;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Recuadro azul claro para los totales */
+.total {
+  background-color: #e8f0fd;
+  padding: 8px 30px;
+  border-radius: 6px;
+  font-weight: bold;
+}
+
+
+/* ---------- 5. INICIO ---------- */
+
+/* Tarjetas de resumen: cada una con su color de fondo */
+.dato {
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.dato strong {
+  display: block;            /* el número baja a otra línea */
+  font-size: 30px;
+  margin-top: 6px;
+}
+
+.azul    { background-color: #e8f0fd; }
+.verde   { background-color: #dcf5e6; }
+.naranja { background-color: #fdf1d8; }
+.violeta { background-color: #f1e8fd; }
+
+/* Gráfico de torta SOLO con CSS:
+   border-radius: 50% hace un círculo y conic-gradient lo pinta
+   en porciones según porcentaje (2 de 5 órdenes = 40%). */
+.dona {
+  width: 160px;
+  height: 160px;
+  /* ⚠ ESPECIFICIDAD: en el HTML la torta es un <figure>, no un <div>.
+     Si fuera un <div>, ganaría la regla ".fila > div { flex: 1; }"
+     (clase + etiqueta = más prioridad que solo ".dona") y la torta
+     se estiraría como un óvalo. */
+  flex: none;                /* que no se estire dentro de .fila */
+  border-radius: 50%;
+  background: conic-gradient(#3b82f6 0% 40%, #22c55e 40% 80%, #f5b70a 80% 100%);
+}
+
+
+/* ---------- 6. CELULARES ----------
+   La media query aplica estos estilos solo en pantallas chicas. */
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    width: 100%;
+    height: auto;
+  }
+
+  .contenido {
+    margin-left: 0;
+  }
+
+  .grilla-2,
+  .grilla-4 {
+    grid-template-columns: 1fr;  /* todo en una sola columna */
+  }
+
+  .fila,
+  .encabezado {
+    flex-direction: column;      /* apilamos los elementos */
+    align-items: stretch;
+  }
+}
